@@ -8,38 +8,37 @@ import java.util.ArrayList;
 
 import oracle.jdbc.OracleTypes;
 
-public class BuildingDAO {
-	public ArrayList<BuildingVO> list(int userIdx, int nowIdx) {
-		ArrayList<BuildingVO> list = new ArrayList<BuildingVO>();
+public class EventDAO {
+	public ArrayList<EventVO> list(int Idx) {
+		ArrayList<EventVO> list = new ArrayList<EventVO>();
 		
-		String runSP = " {call sp_move(?, ?, ?) }";
+		String runSP = " {call sp_init_users(?, ?) }";
 		
 		try { 
 			Connection conn = DBConnection.getConnection();
 			CallableStatement callableStatement = conn.prepareCall(runSP);
 			
-			callableStatement.setInt(1, userIdx);
-			callableStatement.setInt(2, nowIdx);
-			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
+			callableStatement.setInt(1, Idx);
+			callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
 			
 			try {
 				callableStatement.executeQuery();
-				ResultSet resultSet = (ResultSet) callableStatement.getObject(3);
+				ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
 				
 				while (resultSet.next()) {
-					int locationIdx = resultSet.getInt(1);
-					int typeIdx = resultSet.getInt(2);
-					int price = resultSet.getInt(3);
+					int eventIdx = resultSet.getInt(1);
+					int locationIdx = resultSet.getInt(2);
+					String description = resultSet.getString(3);
 
-					BuildingVO data = new BuildingVO();
+					EventVO data = new EventVO();
 
+					data.setIdx(eventIdx);
 					data.setLocationIdx(locationIdx);
-					data.setTypeIdx(typeIdx);
-					data.setPrice(price);
+					data.setDescription(description);
 					
 					list.add(data);
 
-					System.out.println("locationIdx: " + locationIdx + " " + "typeIdx: " + typeIdx + " " + "price: " + price);
+					System.out.println("Idx: " + eventIdx + " " + "locationIdx: " + locationIdx + " " + "description: " + description);
 					System.out.println();
 					// 추후 이곳에서 UI와 맵핑 예정.
 				}

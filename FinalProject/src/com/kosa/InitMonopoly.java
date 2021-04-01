@@ -16,9 +16,9 @@ public class InitMonopoly {
 		String city = data.getCity();
 
 		if (city != "황금열쇠") {
-//			BuildingDAO dao = new BuildingDAO();
-//			ArrayList<BuildingVO> locationList = dao.list(now_idx);
-//
+			BuildingDAO dao = new BuildingDAO();
+			ArrayList<BuildingVO> locationList = dao.list(user.getIdx(), now_idx);
+
 //			for (int i = 0; i < list.size(); i++) {
 //				BuildingVO buildingData = (BuildingVO) locationList.get(i);
 //				int locationIdx = buildingData.getLocationIdx();
@@ -48,6 +48,8 @@ public class InitMonopoly {
 
 		else if (city == "황금열쇠" || city == "우주정거장") {
 			/* 이벤트 발생 */
+			EventDAO dao = new EventDAO();
+			ArrayList<EventVO> EventList = dao.list(now_idx);
 		}
 
 		user.setTurn(user.getTurn() + 1);
