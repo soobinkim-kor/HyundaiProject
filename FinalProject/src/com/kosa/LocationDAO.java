@@ -13,21 +13,18 @@ import oracle.jdbc.OracleTypes;
 public class LocationDAO {
 	public ArrayList<LocationVO> list() {
 		ArrayList<LocationVO> list = new ArrayList<LocationVO>();
-
-		String runSP = "{ call sp_select_location(?, ?, ?) }";
+		
+		String runSP = "{ call sp_select_location(?) }";
 
 		try {
 			Connection conn = DBConnection.getConnection();
 			CallableStatement callableStatement = conn.prepareCall(runSP);
-
-			callableStatement.registerOutParameter(1, java.sql.Types.NUMERIC);
-			callableStatement.registerOutParameter(2, java.sql.Types.VARCHAR);
-			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
+			
+			callableStatement.registerOutParameter(1, OracleTypes.CURSOR);
 
 			try {
-//				callableStatement.executeQuery();
-				callableStatement.execute();
-				ResultSet resultSet = (ResultSet) callableStatement.getObject(3);
+				callableStatement.executeQuery();
+				ResultSet resultSet = (ResultSet) callableStatement.getObject(1);
 
 				while (resultSet.next()) {
 					int idx = resultSet.getInt(1);
@@ -45,6 +42,7 @@ public class LocationDAO {
 					System.out.println("name: " + city);
 					System.out.println();
 					System.out.println("성공");
+					// 추후 이곳에서 UI와 맵핑 예정.
 				}
 
 				// 넘겨줄 객체가 많을 경우 데이터를 VO에 담아서 출력하거나 전달.

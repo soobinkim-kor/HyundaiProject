@@ -10,6 +10,7 @@ public class UsersVO {
 	private String name;
 	private int money;
 	private int now;
+	private int turn;
 
 	public UsersVO() {
 	}
@@ -51,6 +52,14 @@ public class UsersVO {
 
 	public void setNow(int now) {
 		this.now = now;
+	}
+	
+	public int getTurn() {
+		return turn;
+	}
+
+	public void setTurn(int turn) {
+		this.turn = turn;
 	}
 
 }
