@@ -10,6 +10,7 @@ public class UsersDAO {
 		user.setName(name);
 		user.setMoney(50000);
 		user.setNow(0);
+		user.setTurn(0);
 		
 		String runSP = " {call sp_init_users(?, ?, ?) }";
 		

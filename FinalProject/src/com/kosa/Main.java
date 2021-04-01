@@ -45,12 +45,16 @@ public class Main {
 		while (user1.getMoney() <= 0 || user2.getMoney() <= 0 ||
 			   turn == 10) {
 			if (nowTurn == false) {
-				InitMonopoly.InitMonopolySystem(list, user1, turn);
+				InitMonopoly.InitMonopolySystem(list, user1);
+				nowTurn = true;
 			}
 			
 			else if (nowTurn == true) {
-				InitMonopoly.InitMonopolySystem(list, user2, turn);
+				InitMonopoly.InitMonopolySystem(list, user2);
+				nowTurn = false;
 			}
+			
+			turn++;
 		}
 	
 	}
