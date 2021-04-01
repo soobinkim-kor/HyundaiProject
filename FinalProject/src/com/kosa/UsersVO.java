@@ -53,26 +53,4 @@ public class UsersVO {
 		this.now = now;
 	}
 
-	public static void Init(UsersVO user, String name) {
-		user.setName(name);
-		user.setMoney(50000);
-		user.setNow(1);
-		
-		String runSP = " {call sp_insert_users(?, ?, ?) }";
-		
-		try {
-			Connection conn = DBConnection.getConnection();
-			CallableStatement callableStatement = conn.prepareCall(runSP);
-			callableStatement.setString(1, user.getName());
-			callableStatement.setBigDecimal(2, new BigDecimal(user.getMoney()));
-			callableStatement.setBigDecimal(3, new BigDecimal(user.getNow()));
-			callableStatement.executeUpdate();
-			System.out.println("¼º°ø");
-		} catch (SQLException e) {
-			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }

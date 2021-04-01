@@ -22,24 +22,23 @@ public class JdbcConnection {
 		UsersVO user2 = new UsersVO();
 		String user1_name = "abc";
 		String user2_name = "cba";
-		
-		UsersVO.Init(user1, user1_name);
-		UsersVO.Init(user2, user2_name);
+		UsersDAO.Init(user1, user1_name);
+		UsersDAO.Init(user2, user2_name);
 		/* 유저 데이터 초기화 */
 		
-//		/* 맵 데이터 초기화 */
-//		LocationDAO dao = new LocationDAO();
-//		ArrayList<LocationVO> list = dao.list();
-//		
-//		for (int i = 0; i < list.size(); i++) {
-//			LocationVO data = (LocationVO) list.get(i);
-//			int idx = data.getIdx();
-//			String city = data.getCity();
-//
-//			System.out.println("idx : " + idx);
-//			System.out.println("city : " + city);
-//		}
-//		/* 맵 데이터 초기화 */
+		/* 맵 데이터 초기화 */
+		LocationDAO dao = new LocationDAO();
+		ArrayList<LocationVO> list = dao.list();
+		
+		for (int i = 0; i < list.size(); i++) {
+			LocationVO data = (LocationVO) list.get(i);
+			int idx = data.getIdx();
+			String city = data.getCity();
+
+			System.out.println("idx : " + idx);
+			System.out.println("city : " + city);
+		}
+		/* 맵 데이터 초기화 */
 		
 	
 	}
