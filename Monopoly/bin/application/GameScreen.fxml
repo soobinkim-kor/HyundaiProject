@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="location11" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="940.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="940.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="exitButton" layoutX="1203.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#clickExitButton" prefHeight="47.0" prefWidth="63.0" text="Exit">
 
      	</Button>
-      <Button fx:id="rollDiceButton" layoutX="1076.0" layoutY="598.0" mnemonicParsing="false" onMouseClicked="#clickDiceButton" prefHeight="100.0" prefWidth="100.0" text="Dice" />
+      <Button fx:id="rollDiceButton" layoutX="1076.0" layoutY="598.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Dice" />
       <TextArea fx:id="secondPlayerMoney" accessibleRole="IMAGE_VIEW" editable="false" layoutX="1048.0" layoutY="293.0" minHeight="55.0" prefHeight="55.0" prefWidth="157.0" text="돈2">
          <font>
             <Font name="System Bold" size="30.0" />
@@ -45,7 +45,7 @@
       </Label>
       <Pane layoutX="18.0" layoutY="18.0" prefHeight="912.0" prefWidth="912.0" style="-fx-border-color: black; -fx-border-width: 3;">
          <children>
-            <Pane fx:id="location13" layoutX="130.0" layoutY="1.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location13" layoutX="132.0" layoutY="1.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutY="90.0" prefHeight="39.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: red; -fx-font-weight: 100;" text="시드니">
                      <font>
@@ -54,7 +54,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="location14" layoutX="260.0" layoutY="1.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location14" layoutX="262.0" layoutY="1.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutY="90.0" prefHeight="39.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: red;" text="리스본">
                      <font>
@@ -63,8 +63,8 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="location15" layoutX="390.0" layoutY="1.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;" />
-            <Pane fx:id="location16" layoutX="520.0" layoutY="1.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location15" layoutX="392.0" layoutY="1.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;" />
+            <Pane fx:id="location16" layoutX="522.0" layoutY="1.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutY="90.0" prefHeight="39.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: yellow;" text="마드리드">
                      <font>
@@ -72,7 +72,7 @@
                      </font></Label>
                </children>
             </Pane>
-            <Pane fx:id="location17" layoutX="650.0" layoutY="1.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location17" layoutX="652.0" layoutY="1.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutY="90.0" prefHeight="39.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: yellow;" text="파리">
                      <font>
@@ -81,7 +81,7 @@
                </children>
             </Pane>
             <Pane fx:id="location18" layoutX="780.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;" />
-            <Pane fx:id="location23" layoutX="779.0" layoutY="650.0" prefHeight="130.0" prefWidth="130.0" rotate="90.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location23" layoutX="780.0" layoutY="650.0" prefHeight="130.0" prefWidth="130.0" rotate="90.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutY="90.0" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: lightblue; -fx-border-color: black; -fx-border-width: 1;" text="서울">
                      <font>
@@ -89,8 +89,8 @@
                      </font></Label>
                </children>
             </Pane>
-            <Pane fx:id="location3" layoutX="390.0" layoutY="779.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;" />
-            <Pane fx:id="location1" layoutX="650.0" layoutY="779.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location3" layoutX="391.0" layoutY="779.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;" />
+            <Pane fx:id="location1" layoutX="651.0" layoutY="779.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutY="1.0" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: pink; -fx-border-color: black; -fx-border-width: 1;" text="타이페이">
                      <font>
@@ -98,8 +98,8 @@
                      </font></Label>
                </children>
             </Pane>
-            <Pane fx:id="location6" layoutY="780.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;" />
-            <Pane fx:id="location5" layoutX="130.0" layoutY="779.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location6" layoutX="1.0" layoutY="780.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;" />
+            <Pane fx:id="location5" layoutX="131.0" layoutY="779.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutY="1.0" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: lightgrey; -fx-border-color: black; -fx-border-width: 1;" text="싱가폴">
                      <font>
@@ -107,7 +107,7 @@
                      </font></Label>
                </children>
             </Pane>
-            <Pane fx:id="location4" layoutX="260.0" layoutY="779.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location4" layoutX="261.0" layoutY="779.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutY="1.0" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: lightgrey; -fx-border-color: black; -fx-border-width: 1;" text="마닐라">
                      <font>
@@ -115,7 +115,7 @@
                      </font></Label>
                </children>
             </Pane>
-            <Pane fx:id="location2" layoutX="520.0" layoutY="779.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location2" layoutX="521.0" layoutY="779.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutY="1.0" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: pink; -fx-border-color: black; -fx-border-width: 1;" text="홍콩">
                      <font>
@@ -123,7 +123,7 @@
                      </font></Label>
                </children>
             </Pane>
-            <Pane fx:id="location11" layoutX="1.0" layoutY="130.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location11" layoutX="2.0" layoutY="130.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutX="45.0" layoutY="45.0" prefHeight="39.0" prefWidth="130.0" rotate="90.0" style="-fx-background-color: orange; -fx-border-color: black; -fx-border-width: 1;" text="취리히">
                      <font>
@@ -131,7 +131,7 @@
                      </font></Label>
                </children>
             </Pane>
-            <Pane fx:id="location10" layoutX="1.0" layoutY="260.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location10" layoutX="2.0" layoutY="260.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutX="45.0" layoutY="46.0" prefHeight="39.0" prefWidth="130.0" rotate="90.0" style="-fx-background-color: orange; -fx-border-color: black; -fx-border-width: 1;" text="베를린">
                      <font>
@@ -139,8 +139,8 @@
                      </font></Label>
                </children>
             </Pane>
-            <Pane fx:id="location12" layoutY="1.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;" />
-            <Pane fx:id="location9" layoutX="1.0" layoutY="390.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location12" layoutX="2.0" layoutY="1.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;" />
+            <Pane fx:id="location9" layoutX="2.0" layoutY="390.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutX="45.0" layoutY="46.0" prefHeight="39.0" prefWidth="130.0" rotate="90.0" style="-fx-background-color: gold; -fx-border-color: black; -fx-border-width: 1;" text="황금열쇠">
                      <font>
@@ -149,8 +149,8 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="location0" layoutX="780.0" layoutY="780.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;" />
-            <Pane fx:id="location22" layoutX="779.0" layoutY="520.0" prefHeight="130.0" prefWidth="130.0" rotate="90.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location0" layoutX="781.0" layoutY="780.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;" />
+            <Pane fx:id="location22" layoutX="780.0" layoutY="520.0" prefHeight="130.0" prefWidth="130.0" rotate="90.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutY="90.0" prefHeight="39.0" prefWidth="130.0" style="-fx-background-color: lightblue; -fx-border-color: black; -fx-border-width: 1;" text="부산">
                      <font>
@@ -159,7 +159,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="location21" layoutX="779.0" layoutY="390.0" prefHeight="130.0" prefWidth="130.0" rotate="90.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location21" layoutX="780.0" layoutY="390.0" prefHeight="130.0" prefWidth="130.0" rotate="90.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutY="90.0" prefHeight="39.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: gold;" text="기부">
                      <font>
@@ -168,7 +168,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="location20" layoutX="779.0" layoutY="260.0" prefHeight="130.0" prefWidth="130.0" rotate="90.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location20" layoutX="780.0" layoutY="260.0" prefHeight="130.0" prefWidth="130.0" rotate="90.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutY="90.0" prefHeight="39.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: lightgreen;" text="런던">
                      <font>
@@ -177,16 +177,16 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="location19" layoutX="779.0" layoutY="130.0" prefHeight="130.0" prefWidth="130.0" rotate="90.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location19" layoutX="780.0" layoutY="130.0" prefHeight="130.0" prefWidth="130.0" rotate="90.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
-                  <Label alignment="CENTER" layoutY="90.0" prefHeight="39.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: lightgreen;" text="런던">
+                  <Label alignment="CENTER" layoutY="90.0" prefHeight="39.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1; -fx-background-color: lightgreen;" text="워싱턴">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="location7" layoutX="1.0" layoutY="650.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location7" layoutX="2.0" layoutY="650.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutX="45.0" layoutY="45.0" prefHeight="39.0" prefWidth="130.0" rotate="90.0" style="-fx-background-color: skyblue; -fx-border-color: black; -fx-border-width: 1;" text="이스탄불">
                      <font>
@@ -195,7 +195,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="location8" layoutX="1.0" layoutY="520.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
+            <Pane fx:id="location8" layoutX="2.0" layoutY="520.0" prefHeight="130.0" prefWidth="130.0" style="-fx-border-color: black; -fx-border-width: 1;">
                <children>
                   <Label alignment="CENTER" layoutX="45.0" layoutY="45.0" prefHeight="39.0" prefWidth="131.0" rotate="90.0" style="-fx-background-color: skyblue; -fx-border-color: black; -fx-border-width: 1;" text="코펜하겐">
                      <font>
