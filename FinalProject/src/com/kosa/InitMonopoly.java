@@ -16,16 +16,30 @@ public class InitMonopoly {
 		String city = data.getCity();
 
 		if (city != "황금열쇠") {
+			BuildingDAO dao = new BuildingDAO();
+			ArrayList<BuildingVO> locationList = dao.list(0);
+			
+			for (int i = 0; i < list.size(); i++) {
+			BuildingVO buildingData = (BuildingVO)locationList.get(i);
+			int locationIdx = buildingData.getLocationIdx();
+			int typeIdx = buildingData.getTypeIdx();
+			int price = buildingData.getPrice();
+
+			System.out.println("locationIdx : " + locationIdx);
+			System.out.println("typeIdx : " + typeIdx);
+			System.out.println("price : " + price);
+		}
+			
 			/* 소유권이 없는 지역을 플레이어가 방문한 경우 */
 //			if {
-//			
+//				
 //			}
-			
+
 			/* 타 플레이어에게 소유권이 있는 지역을 플레이어가 방문한 경우 */
 //			else if {
 //			
 //			}
-			
+
 			/* 해당 플레이어에게 소유권이 있는 지역을 플레이어가 방문한 경우 */
 //			else if {
 //			
@@ -38,18 +52,12 @@ public class InitMonopoly {
 
 		user.setTurn(user.getTurn() + 1);
 
-		if (diceA.getDice() == diceB.getDice()) {
-			/* 시스템 종료 */
-			if (user.getTurn() == 2) {
-				
-			}
-
+		if (diceA.getDice() == diceB.getDice() && user.getTurn() != 2) {
 			/* 두 주사위의 숫자가 동일하면 한 턴 더 진행 */
-			else {
-				InitMonopolySystem(list, user);
-			}
+			InitMonopolySystem(list, user);
 		}
-		
+
 	}
 
 }
+

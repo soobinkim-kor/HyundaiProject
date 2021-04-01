@@ -32,7 +32,7 @@ public class Main {
 		/* 맵 데이터 초기화 */
 		LocationDAO dao = new LocationDAO();
 		ArrayList<LocationVO> list = dao.list();
-//		
+		
 //		for (int i = 0; i < list.size(); i++) {
 //			LocationVO data = (LocationVO) list.get(i);
 //			int idx = data.getIdx();
