@@ -33,15 +33,6 @@ public class Main {
 		LocationDAO dao = new LocationDAO();
 		ArrayList<LocationVO> list = dao.list();
 		
-//		for (int i = 0; i < list.size(); i++) {
-//			LocationVO data = (LocationVO) list.get(i);
-//			int idx = data.getIdx();
-//			String city = data.getCity();
-//
-//			System.out.println("idx : " + idx);
-//			System.out.println("city : " + city);
-//		}
-		
 		while (user1.getMoney() <= 0 || user2.getMoney() <= 0 ||
 			   turn == 10) {
 			if (nowTurn == false) {

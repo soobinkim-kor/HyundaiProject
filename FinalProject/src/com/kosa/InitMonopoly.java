@@ -16,20 +16,20 @@ public class InitMonopoly {
 		String city = data.getCity();
 
 		if (city != "황금열쇠") {
-			BuildingDAO dao = new BuildingDAO();
-			ArrayList<BuildingVO> locationList = dao.list(0);
-			
-			for (int i = 0; i < list.size(); i++) {
-			BuildingVO buildingData = (BuildingVO)locationList.get(i);
-			int locationIdx = buildingData.getLocationIdx();
-			int typeIdx = buildingData.getTypeIdx();
-			int price = buildingData.getPrice();
+//			BuildingDAO dao = new BuildingDAO();
+//			ArrayList<BuildingVO> locationList = dao.list(now_idx);
+//
+//			for (int i = 0; i < list.size(); i++) {
+//				BuildingVO buildingData = (BuildingVO) locationList.get(i);
+//				int locationIdx = buildingData.getLocationIdx();
+//				int typeIdx = buildingData.getTypeIdx();
+//				int price = buildingData.getPrice();
+//
+//				System.out.println("locationIdx : " + locationIdx);
+//				System.out.println("typeIdx : " + typeIdx);
+//				System.out.println("price : " + price);
+//			}
 
-			System.out.println("locationIdx : " + locationIdx);
-			System.out.println("typeIdx : " + typeIdx);
-			System.out.println("price : " + price);
-		}
-			
 			/* 소유권이 없는 지역을 플레이어가 방문한 경우 */
 //			if {
 //				
@@ -60,4 +60,3 @@ public class InitMonopoly {
 	}
 
 }
-

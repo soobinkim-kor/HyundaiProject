@@ -35,8 +35,10 @@ public class BuildingDAO {
 					data.setLocationIdx(locationIdx);
 					data.setTypeIdx(typeIdx);
 					data.setPrice(price);
+					
+					list.add(data);
 
-					System.out.println("locationIdx: " + locationIdx + " " + "typeIdx: " + typeIdx + " " + price);
+					System.out.println("locationIdx: " + locationIdx + " " + "typeIdx: " + typeIdx + " " + "price: " + price);
 					System.out.println();
 					// 추후 이곳에서 UI와 맵핑 예정.
 				}
