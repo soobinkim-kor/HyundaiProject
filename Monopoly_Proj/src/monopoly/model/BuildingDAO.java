@@ -13,7 +13,7 @@ public class BuildingDAO {
 	public ArrayList<BuildingVO> list(int userIdx, int nowIdx) {
 		ArrayList<BuildingVO> list = new ArrayList<BuildingVO>();
 		
-		String runSP = " {call sp_move(?, ?, ?) }";
+		String runSP = " {call sp_move(?, ?, ?, ?, ?, ?) }";
 		
 		try {
 			Connection conn = DBConnection.getConnection();
@@ -22,10 +22,16 @@ public class BuildingDAO {
 			callableStatement.setInt(1, userIdx);
 			callableStatement.setInt(2, nowIdx);
 			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
+			callableStatement.registerOutParameter(4, OracleTypes.CURSOR);
+			callableStatement.registerOutParameter(5, OracleTypes.CURSOR);
+			callableStatement.registerOutParameter(6, OracleTypes.CURSOR);
 			
 			try {
 				callableStatement.executeQuery();
 				ResultSet resultSet = (ResultSet) callableStatement.getObject(3);
+				ResultSet resultSet2 = (ResultSet) callableStatement.getObject(4);
+				ResultSet resultSet3 = (ResultSet) callableStatement.getObject(5);
+				ResultSet resultSet4 = (ResultSet) callableStatement.getObject(6);
 				
 				while (resultSet.next()) {
 					int locationIdx = resultSet.getInt(1);

@@ -18,7 +18,8 @@ public class LocationDAO {
 	public ArrayList<LocationVO> list() {
 		ArrayList<LocationVO> list = new ArrayList<LocationVO>();
 		
-		String runSP = "{ call sp_select_location(?) }";
+		/* 도시 전체 정보 전달 */
+		String runSP = "{ call init_location(?) }";
 
 		try {
 			Connection conn = DBConnection.getConnection();
@@ -37,9 +38,8 @@ public class LocationDAO {
 					LocationVO data = new LocationVO(idx, city);
 
 					list.add(data);
+					System.out.println("idx: " + idx + ", city: " + city);
 				}
-
-				// 넘겨줄 객체가 많을 경우 데이터를 VO에 담아서 출력하거나 전달.
 
 			} catch (SQLException e) {
 				System.out.println("프로시저에서 에러 발생!");

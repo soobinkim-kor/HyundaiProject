@@ -14,16 +14,17 @@ public class UsersDAO {
 		user.setNow(0);
 		user.setTurn(0);
 		
-		String runSP = " {call sp_init_users(?, ?, ?) }";
+		/* 초기 플레이어 설정 */
+		String runSP = " {call init_users(?, ?) }";
 		
 		try {
 			Connection conn = DBConnection.getConnection();
 			CallableStatement callableStatement = conn.prepareCall(runSP);
 			callableStatement.setString(1, user.getName());
 			callableStatement.setBigDecimal(2, new BigDecimal(user.getMoney()));
-			callableStatement.setBigDecimal(3, new BigDecimal(user.getNow()));
 			callableStatement.executeUpdate();
-			System.out.println("성공");
+			
+			System.out.println("Name: " + user.getName() + ", Money: " + user.getMoney());
 		} catch (SQLException e) {
 			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
 			e.printStackTrace();
