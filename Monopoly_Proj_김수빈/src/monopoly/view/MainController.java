@@ -28,6 +28,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 public class MainController{
 //public class MainController {
+
+	
 	@FXML
 	private Label location0, location1, location2, location3, location4, location5, location6,
 				  location7, location8, location9, location10, location11, location12, location13, 
@@ -89,9 +91,13 @@ public class MainController{
 	
 	public void startButtonClick(ActionEvent event) throws IOException {
 
-		try{
+		try {
+			
+			Stage stage = (Stage) startButton.getScene().getWindow();
+			stage.close();
+			
 			Stage primaryStage= new Stage();
-		    Parent main = FXMLLoader.load(getClass().getResource("Main.fxml"));
+		    Parent main = FXMLLoader.load(getClass().getResource("GameScreen.fxml"));
 		    Scene scene = new Scene(main);
 		    primaryStage.setScene(scene);
             primaryStage.show();
@@ -103,6 +109,15 @@ public class MainController{
 
 		}
 		
+	}
+	
+	public void exitButtonClick(ActionEvent event) throws IOException{
+		try {
+			Stage stage = (Stage) exitButton.getScene().getWindow();
+			stage.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 //	@Override
