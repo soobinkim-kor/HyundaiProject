@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monopoly.view.MainController">
+   <children>
+      <SplitPane dividerPositions="0.6429618768328446" layoutX="223.0" layoutY="254.0" prefHeight="768.0" prefWidth="1366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="location11" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="-1.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location12" alignment="CENTER" contentDisplay="CENTER" layoutX="124.0" layoutY="-1.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location13" alignment="CENTER" contentDisplay="CENTER" layoutX="249.0" layoutY="-1.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location14" alignment="CENTER" contentDisplay="CENTER" layoutX="374.0" layoutY="-1.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location15" alignment="CENTER" contentDisplay="CENTER" layoutX="499.0" layoutY="-1.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location16" alignment="CENTER" contentDisplay="CENTER" layoutX="624.0" layoutY="-1.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location17" alignment="CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="-1.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location18" alignment="CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="124.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location20" alignment="CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="374.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location19" alignment="CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="249.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location21" alignment="CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="499.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location0" alignment="CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="624.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location1" alignment="CENTER" contentDisplay="CENTER" layoutX="624.0" layoutY="624.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location2" alignment="CENTER" contentDisplay="CENTER" layoutX="499.0" layoutY="624.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location3" alignment="CENTER" contentDisplay="CENTER" layoutX="374.0" layoutY="624.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location4" alignment="CENTER" contentDisplay="CENTER" layoutX="249.0" layoutY="624.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location5" alignment="CENTER" contentDisplay="CENTER" layoutX="124.0" layoutY="624.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location6" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="624.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location7" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="499.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location8" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="374.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location9" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="249.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+                  <Label fx:id="location10" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="124.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="Label" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Button layoutX="208.0" layoutY="360.0" mnemonicParsing="false" onAction="#Button" text="Button" />
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
