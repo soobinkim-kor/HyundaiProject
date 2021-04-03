@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class playerPropertyController {
 	@FXML
-	private Button fppExitButton;
+	private Button fppExitButton, sppExitButton;
 	
 	public playerPropertyController(){}
 	
@@ -17,6 +17,20 @@ public class playerPropertyController {
 
 		try {
 			Stage stage = (Stage) fppExitButton.getScene().getWindow();
+			stage.close();      
+
+		 } catch(Exception e){
+
+		       e.printStackTrace();
+
+		}
+		
+	}
+	
+	public void sppExitButtonClick(ActionEvent event) throws IOException {
+
+		try {
+			Stage stage = (Stage) sppExitButton.getScene().getWindow();
 			stage.close();      
 
 		 } catch(Exception e){

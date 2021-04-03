@@ -22,10 +22,11 @@ public class MainController{
 				  location14, location15, location16, location17, location18, location19, location20, 
 				  location21, turnDisplayLabel, firstDiceValue, SecondDiceValue, firstPlayerMoney, secondPlayerMoney;
 	@FXML
-	private Button RollDiceButton, MainExitButton, firstPlayerPropertyButton, secondPlayerPropertyButton;
+	private Button RollDiceButton, MainExitButton, firstPlayerPropertyButton, secondPlayerPropertyButton, chartViewButton, testButton;
 	
 	@FXML
 	private TextArea text;
+	
 	
 	// 생성자
 	public MainController() {}
@@ -68,8 +69,45 @@ public class MainController{
 		labelList.add(location21);
 	}
 	
+	public void testPurchaseAction(ActionEvent event) throws IOException{
+
+		try {		
+			
+			Stage primaryStage= new Stage();
+		    Parent main = FXMLLoader.load(getClass().getResource("purchaseAction.fxml"));
+		    Scene scene = new Scene(main);
+		    primaryStage.setScene(scene);
+            primaryStage.show();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void setMoney(ActionEvent event) throws IOException{
+		//if문으로 player 선택
+		try {
+			//돈을 불러오는 메소드
+			firstPlayerMoney.setText(null); //null에 돈이 들어가면 됨
+			//돈을 바꾸는 메소드
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			//돈을 불러오는 메소드
+			secondPlayerMoney.setText(null); //null에 돈이 들어가면 됨
+			//돈을 바꾸는 메소드
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 	public void RollDiceButtonClick(ActionEvent event) throws IOException{
 		System.out.println("주사위 굴리기 버튼");
+		//이쪽에 purchaseAction 쪽 메소드 호출 or 로케이션에 건물이 있을 시 바로 돈 차감
 	}
 	
 	
@@ -84,12 +122,11 @@ public class MainController{
 	}
 	
 	public void firstPlayerPropertyButtonClick(ActionEvent event) throws IOException{
-		try {
-			Stage stage = (Stage) firstPlayerPropertyButton.getScene().getWindow();
-			stage.close();
+
+		try {		
 			
 			Stage primaryStage= new Stage();
-		    Parent main = FXMLLoader.load(getClass().getResource("firstPersonProperty.fxml"));
+		    Parent main = FXMLLoader.load(getClass().getResource("firstPlayerProperty.fxml"));
 		    Scene scene = new Scene(main);
 		    primaryStage.setScene(scene);
             primaryStage.show();
@@ -100,12 +137,11 @@ public class MainController{
 	}
 	
 	public void secondPlayerPropertyButtonClick(ActionEvent event) throws IOException{
+		
 		try {
-			Stage stage = (Stage) secondPlayerPropertyButton.getScene().getWindow();
-			stage.close();
-			
+
 			Stage primaryStage= new Stage();
-		    Parent main = FXMLLoader.load(getClass().getResource("secondPersonProperty.fxml"));
+		    Parent main = FXMLLoader.load(getClass().getResource("secondPlayerProperty.fxml"));
 		    Scene scene = new Scene(main);
 		    primaryStage.setScene(scene);
             primaryStage.show();
@@ -114,5 +150,22 @@ public class MainController{
 		}
 		
 	}
+	
+	public void viewChart(ActionEvent event) throws IOException{
+		System.out.println("viewChart 실행");
+		try {
+
+			Stage primaryStage= new Stage();
+		    Parent main = FXMLLoader.load(getClass().getResource("chart.fxml"));
+		    Scene scene = new Scene(main);
+		    primaryStage.setScene(scene);
+            primaryStage.show();
+            
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 }
 
