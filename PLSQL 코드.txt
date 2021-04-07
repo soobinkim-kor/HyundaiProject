@@ -1,0 +1,809 @@
+
+-- 계정 생성 및 권한 부여
+-- sqlplus system/oracle@localhost:1521/xepdb1
+--  SQL> create user game
+--  2  identified by good
+--  3  default tablespace users
+--  4  temporary tablespace temp;
+--  SQL> alter user game quota unlimited on users;
+--  SQL> grant connect, resource to game;
+--  SQL> grant create view, create role to game;
+--  SQL> grant create synonym to public;
+
+drop package game_pkg;
+drop table properties cascade constraints purge;
+drop table building cascade constraints purge;
+drop table location cascade constraints purge;
+drop table event cascade constraints purge;
+drop table type cascade constraints purge;
+drop table users cascade constraints purge;
+
+drop cluster b_location_idx;
+drop index building_idx_index;
+
+create cluster b_location_idx (location_idx number(5)) index;
+create index building_idx_index on cluster b_location_idx;
+
+CREATE TABLE building (
+    location_idx  NUMBER(5) NOT NULL,
+    type_idx      NUMBER(3) NOT NULL,
+    price         NUMBER(5)
+) cluster b_location_idx(location_idx);
+
+ALTER TABLE building ADD CONSTRAINT location_pkv2 PRIMARY KEY ( location_idx,
+                                                                type_idx );
+
+
+-- After Create script example for table BUILDING
+CREATE TABLE event (
+    idx           NUMBER(5) NOT NULL,
+    location_idx  NUMBER(5) NOT NULL,
+    description   VARCHAR2(200) NOT NULL
+) organization heap;
+
+ALTER TABLE event ADD CONSTRAINT event_pk PRIMARY KEY ( idx,
+                                                        location_idx );
+
+
+-- After Create script example for table EVENT
+CREATE TABLE location (
+    idx   NUMBER(5) NOT NULL,
+    city  VARCHAR2(30) NOT NULL
+)
+partition by range(idx)
+(
+    partition idx_1 values less than (5),
+    partition idx_2 values less than (11),
+    partition idx_3 values less than (16),
+    partition idx_4 values less than (23)
+);
+
+ALTER TABLE location ADD CONSTRAINT location_pk PRIMARY KEY ( idx );
+
+
+-- After Create script example for table LOCATION
+CREATE TABLE properties (
+    users_idx              NUMBER(5) NOT NULL,
+    building_location_idx  NUMBER(5) NOT NULL,
+    building_type_idx      NUMBER(3) NOT NULL,
+    fine                   NUMBER(10) NOT NULL
+) organization heap;
+
+ALTER TABLE properties
+    ADD CONSTRAINT properties_pk PRIMARY KEY ( users_idx,
+                                               building_location_idx,
+                                               building_type_idx );
+
+
+-- After Create script example for table PROPERTIES
+CREATE TABLE type (
+    idx   NUMBER(3) primary key NOT NULL,
+    name  VARCHAR2(30) NOT NULL
+) organization index;
+
+--ALTER TABLE type ADD CONSTRAINT type_pk PRIMARY KEY ( idx );
+
+
+-- After Create script example for table TYPE
+CREATE TABLE users (
+    idx    NUMBER(5) NOT NULL,
+    name   VARCHAR2(30) NOT NULL,
+    money  NUMBER(10) NOT NULL,
+    now    NUMBER(5) NOT NULL
+) organization heap;
+
+ALTER TABLE users ADD CONSTRAINT users_pk PRIMARY KEY ( idx );
+
+
+-- After Create script example for table USERS
+ALTER TABLE building
+    ADD CONSTRAINT building_location_fk FOREIGN KEY ( location_idx )
+        REFERENCES location ( idx );
+
+ALTER TABLE building
+    ADD CONSTRAINT building_type_fk FOREIGN KEY ( type_idx )
+        REFERENCES type ( idx );
+
+ALTER TABLE event
+    ADD CONSTRAINT event_location_fk FOREIGN KEY ( location_idx )
+        REFERENCES location ( idx );
+
+ALTER TABLE properties
+    ADD CONSTRAINT properties_building_fk FOREIGN KEY ( building_location_idx,
+                                                        building_type_idx )
+        REFERENCES building ( location_idx,
+                              type_idx );
+
+ALTER TABLE properties
+    ADD CONSTRAINT properties_users_fk FOREIGN KEY ( users_idx )
+        REFERENCES users ( idx );
+        
+drop synonym building_synonym;
+drop synonym users_synonym;
+
+create synonym building_synonym for building;
+create synonym users_synonym for users;
+
+drop index properties_idx_index;
+create index properties_idx_index on properties(users_idx);
+
+drop sequence user_idx_seq;
+
+create sequence user_idx_seq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 1000
+nocycle
+nocache;
+
+create or replace trigger make_building_price
+after insert on location
+for each row
+begin
+    if :new.city <> '황금열쇠' and
+    :new.city <> '무인도' and
+    :new.city <> '시작점' and
+    :new.city <> '은행' and
+    :new.city <> '우주선' then
+        for i in 1..4
+        loop
+            insert into building(location_idx, type_idx, price)
+            values(:new.idx, i, (:new.idx + i) * 1000);
+        end loop;
+    end if;
+end;
+/
+
+create or replace view type_building_view as
+select * from type, building_synonym
+        where type.idx = building_synonym.type_idx;
+        
+
+insert into TYPE(idx, name)
+values(1, '모텔');
+insert into TYPE(idx, name)
+values(2, '빌딩');
+insert into TYPE(idx, name)
+values(3, '호텔');
+insert into TYPE(idx, name)
+values(4, '랜드마크');
+
+insert into location(idx, city) values (1, '시작점');            
+insert into location(idx, city) values (2, '타이페이');
+insert into location(idx, city) values (3, '홍콩');
+insert into location(idx, city) values (4, '황금열쇠');
+insert into location(idx, city) values (5, '마닐라');
+insert into location(idx, city) values (6, '싱가폴');
+insert into location(idx, city) values (7, '무인도');
+insert into location(idx, city) values (8, '이스탄불');
+insert into location(idx, city) values (9, '코펜하겐');
+insert into location(idx, city) values (10, '리스본');
+insert into location(idx, city) values (11, '베를린');
+insert into location(idx, city) values (12, '황금열쇠');
+insert into location(idx, city) values (13, '취리히');
+insert into location(idx, city) values (14, '시드니');
+insert into location(idx, city) values (15, '우주선');
+insert into location(idx, city) values (16, '로마');
+insert into location(idx, city) values (17, '마드리드');
+insert into location(idx, city) values (18, '황금열쇠');
+insert into location(idx, city) values (19, '파리');
+insert into location(idx, city) values (20, '워싱턴');
+insert into location(idx, city) values (21, '서울');
+insert into location(idx, city) values (22, '은행');
+
+
+insert into event(idx, location_idx, description)
+values(1, 1, '한 바퀴 돌았습니다. 2000원을 받으세요!');
+insert into event(idx, location_idx, description)
+values(2, 4, '세계여행 당첨! 우주선으로 이동하세요.');
+insert into event(idx, location_idx, description)
+values(3, 4, '당첨! 2000원을 획득하셨습니다.');
+insert into event(idx, location_idx, description)
+values(4, 7, '무인도! 앞으로 3턴 동안 나가지 못합니다. 더블을 노리세요!');
+insert into event(idx, location_idx, description)
+values(5, 12, '당첨! 앞으로 세 칸 이동하세요.');
+insert into event(idx, location_idx, description)
+values(6, 12, '당첨! 앞으로 두 칸 이동하세요.');
+insert into event(idx, location_idx, description)
+values(7, 12, '꽝! 뒤로 두 칸 이동하세요.');
+insert into event(idx, location_idx, description)
+values(8, 12, '당첨! 앞으로 두 칸 이동하세요.');
+insert into event(idx, location_idx, description)
+values(9, 15, '세계여행! 원하는 곳을 선택하세요.');
+insert into event(idx, location_idx, description)
+values(10, 18, '꽝! 뒤로 한 칸 이동하세요.');
+insert into event(idx, location_idx, description)
+values(11, 18, '축! 앞으로 한 칸 이동하세요.');
+insert into event(idx, location_idx, description)
+values(12, 22, '은행! 1000원을 반납하세요.');    
+
+create or replace package game_pkg
+is  
+    -- 전체 유저 정보 전달 프로시저
+    procedure get_all_users_information_procedure(
+        user_cursor out sys_refcursor);
+
+    -- 특정 유저 정보 전달 프로시저
+    procedure get_user_cursor(now_user_idx in number,
+    user_cursor out sys_refcursor);
+    
+    -- 도시 전체 정보 전달
+    procedure get_building_location(location_cursor out sys_refcursor);
+    
+    -- 초기 플레이어 설정
+    procedure init_users(init_name in varchar2,
+    init_money in number);
+    
+    -- 특정 지역의 건물 여부 확인
+    function check_building(input_user_idx in number, input_location_idx in number)
+        return number;
+
+    -- 전체 플레이어 소유 건물 정보 전달 프로시저
+    procedure get_properties_cursor(properties_cursor out sys_refcursor);
+    
+    -- 현재 위치의 건물 정보 전달 함수
+    function get_building_information(now_location_idx in number)
+        return sys_refcursor;
+    
+    -- 한바퀴 돌면 2000원 획득
+    procedure move_one(now_user_idx in number);
+    
+    -- 이벤트 장소로 이동
+    procedure move_event_place(now_user_idx in number,
+    nxt_location_idx in number);
+    
+    -- 12번 이벤트 -> 은행에 1000원 반납
+    procedure move_bank(now_user_idx in number);
+    
+    -- 우주선으로 원하는 곳으로 이동
+    procedure move_spaceship(now_user_idx in number,
+    nxt_location_idx in number);
+
+    -- 이벤트 체크
+    procedure event_check(now_location_idx in number,
+    flag out number);
+    
+    -- 랜덤 이벤트 받기
+    procedure get_random_event(now_user_idx in number,
+    now_location_idx in number,
+    event_cursor out sys_refcursor);
+
+    -- 이벤트 실행
+    procedure event_execute(now_user_idx in number,
+    now_location_idx in number,
+    event_idx in number,
+    flag out number);
+    
+    -- 빈 땅, 상대 땅, 내 땅 인지 확인
+    procedure building_check(now_user_idx in number,
+    now_location_idx in number,
+    flag out number);
+    
+    -- 빈 땅 정보 보여주기
+    procedure purchase_empty_region_information(now_location_idx in number,
+    building_cursor out sys_refcursor);
+    
+    -- 빈 땅 구매하기
+    procedure purchase_empty_region(now_user_idx in number, 
+    now_location_idx in number,
+    purchase_type in number);
+    
+    -- 상대 땅 벌금 부여
+    procedure penalty(now_user_idx in number,
+    now_location_idx in number);
+    
+    -- 상대 건물 인수
+    procedure get_your_building(
+        now_user_idx in number,
+        now_location_idx in number,
+        flag out number
+    );
+    
+    -- 내 땅 도착했을 때 구매할 수 있는 추가 건물 정보 보여주기
+    procedure purchase_other_building_information(now_user_idx in number,
+    now_location_idx in number,
+    building_cursor out sys_refcursor);
+    
+    -- 내 땅 도착했을 때 다른 건물 구매하기
+    procedure purchase_other_building(now_user_idx in number, 
+    now_location_idx in number,
+    purchase_type in number,
+    flag out number);
+    
+    -- 주사위 굴린 후 이동
+    procedure sp_move(now_user_idx in number,
+    now_location_idx in number);
+    
+    -- 랜덤 이벤트 행 구하기
+    function get_event(now_user_idx in number, now_location_idx in number)
+        return sys_refcursor;
+        
+    -- 게임 종료 시 users, properties 테이블 데이터 제거
+    procedure exit_procedure;
+    
+    -- 시퀀스 초기화
+    PROCEDURE PR_RESET_SEQ( SEQ_NAME IN VARCHAR2 );
+end game_pkg;
+
+create or replace package body game_pkg is
+    -- 전체 유저 정보 전달 프로시저
+    procedure get_all_users_information_procedure(
+        user_cursor out sys_refcursor)
+    as
+    begin
+        open user_cursor for
+        select * from users_synonym
+        order by idx;
+    end get_all_users_information_procedure;
+
+    -- 특정 유저 정보 전달 프로시저
+    procedure get_user_cursor(now_user_idx in number,
+    user_cursor out sys_refcursor)
+    as
+    begin
+        open user_cursor for
+        select idx, name, money, now
+        from users_synonym
+        where idx = now_user_idx;
+    end get_user_cursor;
+    
+    -- 도시 전체 정보 전달
+    procedure get_building_location(location_cursor out sys_refcursor)
+    as
+    begin
+        open location_cursor for
+        select * from location
+        order by idx;
+    end get_building_location;
+
+    -- 초기 플레이어 설정
+    procedure init_users(init_name in varchar2,
+    init_money in number)
+    as
+    begin
+        insert into users(idx, name, money, now)
+        values(user_idx_seq.NEXTVAL, init_name, init_money, 1);
+        commit;
+    end init_users;
+
+    -- 특정 지역의 건물 여부 확인
+    function check_building(input_user_idx in number, input_location_idx in number)
+        return number
+    is
+        users_idx number(5);
+        building_location_idx number(5);
+        building_type_idx number(3);
+        fine number(10);
+    begin
+        select users_idx, BUILDING_LOCATION_idx, BUILDING_LOCATION_idx, fine
+        into users_idx, building_location_idx, building_type_idx, fine
+        from properties
+        where building_location_idx = input_location_idx
+        union all
+        select null as users_idx, null as BUILDING_LOCATION_idx, null as BUILDING_LOCATION_idx, null as fine
+        from dual
+        where not exists
+        (select users_idx, BUILDING_LOCATION_idx, BUILDING_LOCATION_idx, fine
+        from properties
+        where building_location_idx = input_location_idx);
+    
+        if users_idx <> input_user_idx then
+            -- 자기 땅이 아닐 경우 return 벌금
+            return fine;
+        elsif users_idx is null then
+            return null;
+        else
+            -- 자기 땅일 경우 return 1
+            return 1;
+        end if;
+    end check_building;
+
+    -- 전체 플레이어 소유 건물 정보 전달 프로시저
+    procedure get_properties_cursor(properties_cursor out sys_refcursor)
+    as
+    begin
+        open properties_cursor for
+        select *
+        from properties;
+    end get_properties_cursor;
+
+    -- 현재 위치의 건물 정보 전달 함수
+    function get_building_information(now_location_idx in number)
+        return sys_refcursor
+    is
+        building_cursor sys_refcursor;
+    begin
+        open building_cursor for
+        select location_idx, name, price
+        from type_building_view
+        where location_idx = now_location_idx;
+        return building_cursor;
+    end get_building_information;
+
+    -- 한바퀴 돌면 2000원 획득
+    procedure move_one(now_user_idx in number)
+    as
+        user_idx number(5);
+        user_name varchar2(30);
+        user_money number(10);
+        user_now number(5);
+    begin
+        select idx, name, money, now
+        into user_idx, user_name, user_money, user_now
+        from users_synonym
+        where idx = now_user_idx;
+        
+        update users
+        set money = user_money + 2000
+        where idx = now_user_idx;
+        commit;
+    end move_one;
+
+    -- 이벤트 장소로 이동
+    procedure move_event_place(now_user_idx in number,
+    nxt_location_idx in number)
+    as
+    begin
+        update users
+        set now = nxt_location_idx
+        where idx = now_user_idx;
+        commit;
+    end move_event_place;
+
+    -- 12번 이벤트 -> 은행에 1000원 반납
+    procedure move_bank(now_user_idx in number)
+    as
+        user_idx number(5);
+        user_name varchar2(30);
+        user_money number(10);
+        user_now number(5);
+    begin
+        select idx, name, money, now
+        into user_idx, user_name, user_money, user_now
+        from users_synonym
+        where idx = now_user_idx;
+        
+        if user_money > 1000 then
+            update users
+            set money = user_money - 1000
+            where idx = now_user_idx;
+            commit;
+        else
+            update users
+            set money = 0
+            where idx = now_user_idx;
+            commit;
+        end if;
+    end move_bank;
+
+    -- 우주선으로 원하는 곳으로 이동
+    procedure move_spaceship(now_user_idx in number,
+    nxt_location_idx in number)
+    as
+    begin
+        if nxt_location_idx < 15 then
+            move_one(now_user_idx);
+        end if;
+        update users
+        set now = nxt_location_idx
+        where idx = now_user_idx;
+        commit;
+    end move_spaceship;
+    
+    -- 이벤트 체크
+    procedure event_check(now_location_idx in number,
+    flag out number)
+    as
+        event_count number(5);
+    begin
+        select count(*) into event_count
+        from event
+        where location_idx = now_location_idx;
+        if event_count > 0 then
+            flag := 1;
+        else
+            flag := 0;
+        end if;
+    end event_check;
+    
+    -- 랜덤 이벤트 받기
+    procedure get_random_event(now_user_idx in number,
+    now_location_idx in number,
+    event_cursor out sys_refcursor)
+    as
+    begin
+        event_cursor := get_event(now_user_idx, now_location_idx);
+    end get_random_event;
+    
+    -- 이벤트 실행
+    procedure event_execute(now_user_idx in number,
+    now_location_idx in number,
+    event_idx in number,
+    flag out number)
+    as
+    begin
+        flag := 0;
+        if event_idx = 1 then
+            move_one(now_user_idx);
+        elsif event_idx = 2 then
+            if now_location_idx > 15 then
+                move_one(now_user_idx);
+            end if;
+            move_event_place(now_user_idx, 15);
+        elsif event_idx = 3 then
+            move_one(now_user_idx);
+        -- 무인도
+        elsif event_idx = 4 then
+            flag := 1;
+        elsif event_idx = 5 then
+            move_event_place(now_user_idx, now_location_idx + 3);
+        elsif event_idx = 6 then
+            move_event_place(now_user_idx, now_location_idx + 2);
+        elsif event_idx = 7 then
+            move_event_place(now_user_idx, now_location_idx - 2);
+        elsif event_idx = 8 then
+            move_event_place(now_user_idx, now_location_idx + 2);
+        -- 우주선
+        elsif event_idx = 9 then 
+            flag := 2;
+        elsif event_idx = 10 then
+            move_event_place(now_user_idx, now_location_idx - 1);
+        elsif event_idx = 11 then
+            move_event_place(now_user_idx, now_location_idx + 1);
+        -- 은행
+        elsif event_idx = 12 then
+            move_bank(now_user_idx);
+        end if;
+    end event_execute;
+
+    -- 빈 땅, 상대 땅, 내 땅 인지 확인
+    procedure building_check(now_user_idx in number,
+    now_location_idx in number,
+    flag out number)
+    as
+        fee number(10);
+    begin
+        fee := check_building(now_user_idx, now_location_idx);
+        IF fee is null then
+            flag := 0;
+            -- 자바에서 purchase_empty_region_information 요청
+        elsif fee != 1 then
+            flag := 1;
+        else
+            flag := 2;
+        end if;
+    end building_check;
+    
+    -- 빈 땅 정보 보여주기
+    procedure purchase_empty_region_information(now_location_idx in number,
+    building_cursor out sys_refcursor)
+    as
+    begin
+        building_cursor := get_building_information(now_location_idx);
+    end purchase_empty_region_information;
+    
+    -- 빈 땅 구매하기
+    procedure purchase_empty_region(now_user_idx in number, 
+    now_location_idx in number,
+    purchase_type in number)
+    as
+        building_price number(10);
+        now_money number(10);
+    begin
+        select price into building_price
+        from building_synonym
+        where (location_idx = now_location_idx and
+        type_idx = purchase_type);
+        
+        select money into now_money
+        from users_synonym
+        where idx = now_user_idx;
+        
+        if now_money - building_price > 0 then
+            insert into properties(users_idx, building_location_idx, building_type_idx, fine)
+            values(now_user_idx, now_location_idx, purchase_type, building_price * 2);
+            update users
+            set money = now_money - building_price
+            where idx = now_user_idx;
+            commit;
+        end if;
+    end purchase_empty_region;
+    
+    -- 상대 땅 벌금 부여
+    procedure penalty(now_user_idx in number,
+    now_location_idx in number)
+    as
+        fee number(10);
+        user_money number(10);
+    begin
+        fee := check_building(now_user_idx, now_location_idx);
+        
+        select money into user_money
+        from users_synonym
+        where idx = now_user_idx;
+        if user_money - fee > 0 then
+            update users
+            set money = user_money - fee
+            where idx = now_user_idx;
+            commit;
+        else 
+            update users
+            set money = 0
+            where idx = now_user_idx;
+            commit;
+        end if;
+    end;
+    
+    -- 상대 건물 인수
+    procedure get_your_building(
+        now_user_idx in number,
+        now_location_idx in number,
+        flag out number
+    )
+    as
+        user_idx number(5);
+        user_name varchar2(30);
+        user_money number(10);
+        user_now number(5);
+        building_fine number(10);
+    begin
+        select idx, name, money, now
+        into user_idx, user_name, user_money, user_now
+        from users_synonym
+        where idx = now_user_idx;
+        
+        select fine into building_fine
+        from properties 
+        where building_location_idx = now_location_idx;
+        if user_money - building_fine > 0 then
+            update users
+            set money = user_money - building_fine
+            where idx = now_user_idx;
+            update properties
+            set users_idx = now_user_idx
+            where users_idx <> now_user_idx and
+            building_location_idx = now_location_idx;
+            commit;
+            flag := 1;
+        else
+            flag := 0;
+        end if;
+    end get_your_building;
+    
+    -- 내 땅 도착했을 때 구매할 수 있는 추가 건물 정보 보여주기
+    procedure purchase_other_building_information(now_user_idx in number,
+    now_location_idx in number,
+    building_cursor out sys_refcursor)
+    as
+        mx_building_type number(3);
+    begin
+        select building_type_idx into mx_building_type
+        from properties
+        where users_idx = now_user_idx and building_location_idx = now_location_idx;
+        
+        open building_cursor for
+        select location_idx, name, price
+        from (select * from type_building_view
+        where type_idx > mx_building_type)
+        where location_idx = now_location_idx;
+    end purchase_other_building_information;
+    
+    -- 내 땅 도착했을 때 다른 건물 구매하기
+    procedure purchase_other_building(now_user_idx in number, 
+    now_location_idx in number,
+    purchase_type in number,
+    flag out number)
+    as
+        building_price number(10);
+        now_money number(10);
+    begin
+        select price into building_price
+        from building_synonym
+        where (location_idx = now_location_idx and
+        type_idx = purchase_type);
+    
+        select money into now_money
+        from users_synonym
+        where idx = now_user_idx;
+        
+        if now_money - building_price > 0 then
+            update properties
+            set building_type_idx = purchase_type, fine = building_price * 2
+            where users_idx = now_user_idx and building_location_idx = now_location_idx;
+            update users
+            set money = now_money - building_price
+            where idx = now_user_idx;
+            commit;
+            flag := 1;
+        else
+            flag := 0;
+        end if;
+    end purchase_other_building;
+        
+    -- 주사위 굴린 후 이동
+    procedure sp_move(now_user_idx in number,
+    now_location_idx in number)
+    as
+        user_idx number(5);
+        user_name varchar2(30);
+        user_money number(10);
+    begin
+        -- 현재 유저의 위치 변경
+        select idx, name, money into user_idx, user_name, user_money
+        from users_synonym
+        where idx = now_user_idx;
+        
+        update users
+        set now = now_location_idx
+        where idx = now_user_idx;
+        commit;
+    end sp_move;
+    
+    -- 랜덤 이벤트 행 구하기
+    function get_event(now_user_idx in number, now_location_idx in number)
+        return sys_refcursor
+    is
+        event_cursor sys_refcursor;
+        cnt number(5);
+        mn number(5);
+        mx number(5);
+        event_idx number(5);
+        event_location_idx number(5);
+        event_description varchar2(200);
+    begin
+        select count(*) into cnt
+        from event
+        where location_idx = now_location_idx;
+        
+        select max(rownum), min(rownum)
+        into mx, mn
+        from (select rownum, idx, location_idx, description
+        from event
+        where location_idx = now_location_idx);
+        -- 랜덤 이벤트 구하기   
+        open event_cursor for
+        select idx, location_idx, description
+        into event_idx, event_location_idx, event_description
+        from (select rownum as rnumber, idx, location_idx, description
+        from event
+        where location_idx = now_location_idx)
+        where rnumber = (select trunc(dbms_random.value(mn, mx + 1)) rand from dual);
+    
+        return event_cursor;
+    end get_event;
+    
+    -- 게임 종료 시 users, properties 테이블 데이터 제거
+    procedure exit_procedure
+    is
+        cursor user_cursor is
+        select * from users;
+        now_value number(5);
+        tmp_sql1 varchar2(1000);
+        tmp_sql2 varchar2(1000);
+        tmp1 number(5);
+        tmp2 number(5);
+    begin
+        for user in user_cursor
+        loop
+            delete from properties
+            where users_idx = user.idx;
+            delete from users
+            where idx = user.idx;
+        end loop;
+        commit;
+        PR_RESET_SEQ('USER_IDX_SEQ');
+    end exit_procedure;
+    
+    -- 시퀀스 초기화
+    PROCEDURE PR_RESET_SEQ( SEQ_NAME IN VARCHAR2 )
+    IS
+        L_VAL NUMBER;
+    BEGIN
+        EXECUTE IMMEDIATE 'select ' || SEQ_NAME || '.nextval from dual' INTO L_VAL;    
+        EXECUTE IMMEDIATE 'alter sequence ' || SEQ_NAME || ' increment by -' || L_VAL || ' minvalue 0';
+        EXECUTE IMMEDIATE 'select ' || SEQ_NAME || '.nextval from dual' INTO L_VAL;
+        EXECUTE IMMEDIATE 'alter sequence ' || SEQ_NAME || ' increment by 1 minvalue 0';
+    END PR_RESET_SEQ;
+end game_pkg;
+/
