@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="547.0" prefWidth="666.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monopoly.view.travelChoiceController">
+   <children>
+      <ChoiceBox fx:id="travelChoiceBox" layoutX="87.0" layoutY="101.0" onAction="#travelToLocation" prefHeight="23.0" prefWidth="262.0">
+		<items>
+        <FXCollections fx:factory="observableArrayList">
+            <String fx:value="타이페이" />
+            <String fx:value="홍콩" />
+            <String fx:value="황금열쇠1" />
+            <String fx:value="마닐라" />
+            <String fx:value="싱가폴" />
+            <String fx:value="무인도" />
+            <String fx:value="이스탄불" />
+            <String fx:value="코펜하겐" />
+            <String fx:value="리스본" />
+            <String fx:value="베를린" />
+            <String fx:value="황금열쇠2" />
+            <String fx:value="취리히" />
+            <String fx:value="시드니" />
+            <String fx:value="우주선" />
+            <String fx:value="로마" />
+            <String fx:value="마드리드" />
+            <String fx:value="황금열쇠3" />
+            <String fx:value="파리" />
+            <String fx:value="워싱턴" />
+            <String fx:value="런던" />
+            <String fx:value="은행" />
+        </FXCollections>
+    	</items>
+      </ChoiceBox>
+      <Label alignment="TOP_LEFT" layoutX="87.0" layoutY="50.0" prefHeight="42.0" prefWidth="288.0" text="세계여행지 선택" textAlignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="550.0" layoutY="124.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="67.0" text="선택" />
+   </children>
+</Pane>

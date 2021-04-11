@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="750.0" maxWidth="1366.0" minHeight="750.0" minWidth="1366.0" prefHeight="750.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monopoly.view.MainController">
+   <children>
+      <SplitPane dividerPositions="0.6429618768328446" layoutX="223.0" layoutY="254.0" maxHeight="768.0" maxWidth="1366.0" minHeight="768.0" minWidth="1366.0" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="748.0" prefWidth="870.0" style="-fx-background-color: white;" SplitPane.resizableWithParent="false">
+               <children>
+                  <Label layoutX="707.0" layoutY="292.0" prefHeight="40.0" prefWidth="125.0" rotate="90.0" style="-fx-background-color: violet;" />
+                  <Label layoutX="707.0" layoutY="167.0" prefHeight="40.0" prefWidth="125.0" rotate="90.0" style="-fx-background-color: violet;" />
+                  <Label layoutX="124.0" layoutY="84.0" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: pink;" />
+                  <Label layoutX="249.0" layoutY="84.0" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: pink;" />
+                  <Label layoutX="624.0" layoutY="84.0" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: skyblue;" />
+                  <Label layoutX="499.0" layoutY="84.0" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: skyblue;" />
+                  <Label layoutX="707.0" layoutY="417.0" prefHeight="40.0" prefWidth="125.0" rotate="90.0" style="-fx-background-color: lightblue;" />
+                  <Label layoutX="707.0" layoutY="540.0" prefHeight="40.0" prefWidth="125.0" rotate="90.0" />
+                  <Label layoutX="624.0" layoutY="624.0" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: lightgreen;" />
+                  <Label layoutX="499.0" layoutY="624.0" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: lightgreen;" />
+                  <Label layoutX="124.0" layoutY="624.0" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: orange;" />
+                  <Label layoutX="249.0" layoutY="624.0" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: orange;" />
+                  <Label layoutX="42.0" layoutY="540.0" prefHeight="40.0" prefWidth="125.0" rotate="90.0" style="-fx-background-color: yellow;" />
+                  <Label layoutX="42.0" layoutY="417.0" prefHeight="40.0" prefWidth="125.0" rotate="90.0" style="-fx-background-color: yellow;" />
+                  <Label layoutX="42.0" layoutY="292.0" prefHeight="40.0" prefWidth="125.0" rotate="90.0" style="-fx-background-color: lightgrey;" />
+                  <Label fx:id="location11" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="-1.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" textAlignment="CENTER">
+                  	<graphic>
+      							<ImageView fitHeight="133.0" fitWidth="123.0" preserveRatio="true" smooth="true">
+       							 	<image>
+      						    		<Image url="@../../../Resources/goldenkey.png" />
+       							 	</image>
+      							</ImageView>
+  					 	</graphic>
+                  	<font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location12" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="124.0" layoutY="-1.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="취리히" textAlignment="CENTER">
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location13" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="249.0" layoutY="-1.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="시드니" textAlignment="CENTER">
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location14" alignment="CENTER" contentDisplay="CENTER" layoutX="374.0" layoutY="-1.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" textAlignment="CENTER">
+                  	<graphic>
+      							<ImageView fitHeight="133.0" fitWidth="123.0" preserveRatio="true" smooth="true">
+       							 	<image>
+      						    		<Image url="@../../../Resources/spaceship.png" />
+       							 	</image>
+      							</ImageView>
+  					 	</graphic>
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location15" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="499.0" layoutY="-1.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="로마" textAlignment="CENTER">
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location16" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="624.0" layoutY="-1.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="마드리드" textAlignment="CENTER">
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location17" alignment="CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="-1.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" textAlignment="CENTER">
+                  	<graphic>
+      							<ImageView fitHeight="133.0" fitWidth="123.0" preserveRatio="true" smooth="true">
+       							 	<image>
+      						    		<Image url="@../../../Resources/goldenkey.png" />
+       							 	</image>
+      							</ImageView>
+  					 	</graphic>
+                  	<font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location18" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="124.0" prefHeight="125.0" prefWidth="125.0" rotate="90.0" style="-fx-border-color: black;" text="파리" textAlignment="CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location20" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="374.0" prefHeight="125.0" prefWidth="125.0" rotate="90.0" style="-fx-border-color: black;" text="런던" textAlignment="CENTER">
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location19" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="249.0" prefHeight="125.0" prefWidth="125.0" rotate="90.0" style="-fx-border-color: black;" text="워싱턴" textAlignment="CENTER">
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location21" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="499.0" prefHeight="125.0" prefWidth="125.0" rotate="90.0" style="-fx-border-color: black;" textAlignment="CENTER">
+                  	<font>
+                        <Font size="20.0" />
+                     </font>
+                     <graphic>
+      							<ImageView fitHeight="121.0" fitWidth="98.0" preserveRatio="true" smooth="true">
+       							 	<image>
+      						    		<Image url="@../../../Resources/bank.png" />
+       							 	</image>
+      							</ImageView>
+                     </graphic></Label>
+                  <Label fx:id="location0" alignment="CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="624.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" textAlignment="CENTER">
+                  	<graphic>
+      							<ImageView fitHeight="133.0" fitWidth="123.0" preserveRatio="true" smooth="true">
+       							 	<image>
+      						    		<Image url="@../../../Resources/start.png" />
+       							 	</image>
+      							</ImageView>
+  					 	</graphic>
+                  
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location1" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="624.0" layoutY="624.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="타이페이" textAlignment="CENTER">
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location2" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="499.0" layoutY="624.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="홍콩" textAlignment="CENTER">
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location3" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="374.0" layoutY="624.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" textAlignment="CENTER">
+                  	<font>
+                        <Font size="20.0" />
+                     </font>
+                     <graphic>
+      							<ImageView fitHeight="115.0" fitWidth="113.0" preserveRatio="true" smooth="true">
+       							 	<image>
+      						    		<Image url="@../../../Resources/goldenkey.png" />
+       							 	</image>
+      							</ImageView>
+                     </graphic></Label>
+                  <Label fx:id="location4" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="249.0" layoutY="624.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="마닐라" textAlignment="CENTER">
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location5" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="124.0" layoutY="624.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" text="싱가폴" textAlignment="CENTER">
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location6" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="624.0" prefHeight="125.0" prefWidth="125.0" style="-fx-border-color: black;" textAlignment="CENTER">
+                  		<graphic>
+      							<ImageView fitHeight="100.0" fitWidth="106.0" preserveRatio="true" smooth="true">
+       							 	<image>
+      						    		<Image url="@../../../Resources/unhabitedisland.png" />
+       							 	</image>
+      							</ImageView>
+  					 	</graphic>
+                  	<font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location7" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="499.0" prefHeight="125.0" prefWidth="125.0" rotate="270.0" style="-fx-border-color: black;" text="이스탄불" textAlignment="CENTER">
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location8" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="374.0" prefHeight="125.0" prefWidth="125.0" rotate="270.0" style="-fx-border-color: black;" text="코펜하겐" textAlignment="CENTER">
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label fx:id="location9" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="249.0" prefHeight="125.0" prefWidth="125.0" rotate="270.0" style="-fx-border-color: black;" text="리스본" textAlignment="CENTER">
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label layoutX="42.0" layoutY="167.0" prefHeight="40.0" prefWidth="125.0" rotate="90.0" style="-fx-background-color: lightgrey;" />
+                  <Label fx:id="location10" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="124.0" prefHeight="125.0" prefWidth="125.0" rotate="270.0" style="-fx-border-color: black;" text="베를린" textAlignment="CENTER">
+                  <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <ImageView fx:id="view" fitHeight="79.0" fitWidth="55.0" layoutX="755.0" layoutY="598.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Resources/player1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="view2" fitHeight="66.0" fitWidth="40.0" layoutX="812.0" layoutY="611.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Resources/player2.png" />
+                     </image>
+                  </ImageView>
+                  <CheckBox fx:id="buildMotel" focusTraversable="false" layoutX="419.0" layoutY="277.0" mnemonicParsing="false" onAction="#motelCheck" text="모텔 건설" />
+                  <CheckBox fx:id="buildBuilding" focusTraversable="false" layoutX="419.0" layoutY="315.0" mnemonicParsing="false" onAction="#buildingCheck" text="빌딩 건설" />
+                  <CheckBox fx:id="buildHotel" focusTraversable="false" layoutX="419.0" layoutY="353.0" mnemonicParsing="false" onAction="#hotelCheck" text="호텔 건설" />
+                  <CheckBox fx:id="buildLandmark" focusTraversable="false" layoutX="419.0" layoutY="390.0" mnemonicParsing="false" onAction="#landmarkCheck" text="랜드마크 건설" />
+                  <Button fx:id="purchaseSelected" focusTraversable="false" layoutX="624.0" layoutY="345.0" mnemonicParsing="false" onAction="#clickedPurchaseButton" prefHeight="30.0" prefWidth="54.0" text="구매" />
+                  <Label fx:id="motel" layoutX="171.0" layoutY="277.0" text="모텔" />
+                  <Label fx:id="building" layoutX="171.0" layoutY="315.0" text="빌딩" />
+                  <Label fx:id="hotel" layoutX="171.0" layoutY="353.0" text="호텔" />
+                  <Label fx:id="landmark" layoutX="171.0" layoutY="391.0" text="랜드마크" />
+                  <Label fx:id="priceInfo" alignment="TOP_LEFT" layoutX="185.0" layoutY="178.0" prefHeight="83.0" prefWidth="529.0" text="도착 지역 정보">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </AnchorPane>
+          <AnchorPane maxHeight="748.0" maxWidth="484.0" minHeight="748.0" minWidth="484.0" prefHeight="748.0" prefWidth="484.0" style="-fx-background-color: white;" SplitPane.resizableWithParent="false">
+               <children>
+                  <TextField fx:id="firstPlayerName" alignment="CENTER" editable="false" layoutX="86.0" layoutY="94.0" prefHeight="56.0" prefWidth="146.0" text="Player1">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="14.0" layoutY="16.0" prefHeight="40.0" prefWidth="71.0" text="진행 턴:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="turnDisplayLabel" alignment="CENTER" focusTraversable="false" layoutX="86.0" layoutY="16.0" prefHeight="40.0" prefWidth="31.0" style="-fx-border-color: black;" text="턴" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="secondPlayerName" alignment="CENTER" editable="false" layoutX="87.0" layoutY="250.0" prefHeight="56.0" prefWidth="146.0" text="Player2">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="firstDiceValue" layoutX="207.0" layoutY="631.0" prefHeight="19.0" prefWidth="25.0" style="-fx-border-color: black;" text="2">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="secondDiceValue" layoutX="254.0" layoutY="631.0" style="-fx-border-color: black;" text="3">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>	
+                  <Label fx:id="firstPlayerMoney" alignment="CENTER" layoutX="86.0" layoutY="150.0" prefHeight="44.0" prefWidth="146.0" style="-fx-border-color: black;" text="50000" textAlignment="CENTER">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="secondPlayerMoney" alignment="CENTER" layoutX="87.0" layoutY="306.0" prefHeight="44.0" prefWidth="146.0" style="-fx-border-color: black;" text="50000" textAlignment="CENTER">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="firstPlayerPropertyButton" focusTraversable="false" layoutX="266.0" layoutY="94.0" mnemonicParsing="false" onAction="#firstPlayerPropertyButtonClick" prefHeight="56.0" prefWidth="123.0" style="-fx-border-color: black; -fx-background-color: white;" text="보유자산 보기">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="secondPlayerPropertyButton" focusTraversable="false" layoutX="266.0" layoutY="250.0" mnemonicParsing="false" onAction="#secondPlayerPropertyButtonClick" prefHeight="56.0" prefWidth="123.0" style="-fx-border-color: black; -fx-background-color: white;" text="보유자산 보기">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <ImageView fx:id="ExitButton" fitHeight="44.0" fitWidth="48.0" layoutX="426.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Resources/logout.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Button fx:id="RollDiceButton" layoutX="196.0" layoutY="537.0" mnemonicParsing="false" onAction="#RollDiceButtonClick" prefHeight="78.0" prefWidth="78.0" style="-fx-border-color: black; -fx-background-color: white;">
+                     <graphic> 
+                  		<ImageView fitHeight="93.0" fitWidth="71.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true"> 
+                  			<image> 
+                  				<Image url="@../../../Resources/dice_emoticon.png" /> 
+                  			</image> 
+                  		</ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Line endX="397.0" layoutX="93.0" layoutY="499.0" startX="-100.0" />
+                 
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
